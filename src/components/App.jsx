@@ -31,6 +31,7 @@ function App() {
     [],
   );
 
+  if (error) return <>There was an error: {error}</>;
   if (!loading) return <Store allProducts={products} />;
 }
 
