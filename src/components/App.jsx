@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 import styles from '../styles/App.module.css';
+import Store from './Store';
 
 function App() {
-  const [shopItems, setShopItems] = useState(null);
+  const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -16,12 +17,12 @@ function App() {
             throw new Error('Unable to fetch shop items from Fake Store API');
           }
           const fetchedShopItems = await response.json();
-          setShopItems(fetchedShopItems);
+          setProducts(fetchedShopItems);
           setError(null); // Prevent error state persisting
           console.log(fetchedShopItems);
         } catch (err) {
           setError(err.message);
-          setShopItems(null);
+          setProducts(null);
           console.log(err);
         } finally {
           setLoading(false);
@@ -30,11 +31,7 @@ function App() {
     [],
   );
 
-  return (
-    <div>
-      <h1 className={styles.title}>Template</h1>
-    </div>
-  );
+  if (!loading) return <Store allProducts={products} />;
 }
 
 export default App;
