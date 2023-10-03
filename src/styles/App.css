@@ -1,0 +1,12 @@
+body {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0;
+
+  color: darkslategray;
+  background-color: whitesmoke;
+}
+
+* {
+  font-family: 'Inter', sans-serif;
+}
