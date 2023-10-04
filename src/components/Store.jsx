@@ -1,28 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { produce } from 'immer';
+import ShopContext from '../shopContext';
 
-export default function Store({ allProducts, itemsInCart, setItemsInCart }) {
+export default function Store({ allProducts }) {
   const products = allProducts;
+  const { cartItems, setCartItems } = useContext(ShopContext);
 
   // Add 1 of this product to the shopping cart
+  // TODO: use useState instead of heavy-handed use-immer
   const handleAddToCart = (product) => {
-    setItemsInCart(
-      produce(itemsInCart, (draft) => {
+    setCartItems(
+      produce(cartItems, (draft) => {
         draft.push(product);
-        console.log(itemsInCart);
+        console.log(cartItems);
       }),
     );
   };
 
   // Remove all products of this type from the shopping cart
   const handleRemoveFromCart = (product) => {
-    setItemsInCart(
-      produce(itemsInCart, (draft) =>
+    setCartItems(
+      produce(cartItems, (draft) =>
         draft.filter((productInCart) => productInCart.id !== product.id),
       ),
     );
-    console.log(itemsInCart);
+    console.log(cartItems);
   };
 
   return (
@@ -54,7 +57,5 @@ const productsPropType = PropTypes.arrayOf(
 );
 
 Store.propTypes = {
-  itemsInCart: productsPropType.isRequired,
   allProducts: productsPropType.isRequired,
-  setItemsInCart: PropTypes.func.isRequired,
 };
