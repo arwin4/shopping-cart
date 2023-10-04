@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import { useImmer } from 'use-immer';
+
 import styles from '../styles/App.module.css';
 import Store from './Store';
 
@@ -7,6 +9,8 @@ function App() {
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const [itemsInCart, setItemsInCart] = useImmer([]);
 
   useEffect(
     () =>
@@ -33,7 +37,13 @@ function App() {
 
   if (error) return <>There was an error: {error}</>;
   if (loading) return <>Loading...</>;
-  return <Store allProducts={products} />;
+  return (
+    <Store
+      allProducts={products}
+      itemsInCart={itemsInCart}
+      setItemsInCart={setItemsInCart}
+    />
+  );
 }
 
 export default App;
