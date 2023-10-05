@@ -6,6 +6,7 @@ import Error from './components/Error';
 import Cart from './components/Cart';
 
 import ShopContext from './shopContext';
+import Root from './components/Root';
 
 function ShopProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
@@ -23,6 +24,11 @@ export default function Router() {
   const router = createBrowserRouter([
     {
       path: '/',
+      element: <Root />,
+      errorElement: <Error />,
+    },
+    {
+      path: 'index',
       element: <App />,
       errorElement: <Error />,
     },
