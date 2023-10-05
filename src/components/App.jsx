@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../styles/App.module.css';
 import Store from './Store';
+import APImock from '../tests/APImock';
 
 function App() {
   const [products, setProducts] = useState(null);
@@ -13,11 +14,12 @@ function App() {
     () =>
       async function fetchShopItems() {
         try {
-          const response = await fetch('https://fakestoreapi.com/products');
-          if (!response.ok) {
-            throw new Error('Unable to fetch shop items from Fake Store API');
-          }
-          const fetchedShopItems = await response.json();
+          // const response = await fetch('https://fakestoreapi.com/products');
+          // if (!response.ok) {
+          //   throw new Error('Unable to fetch shop items from Fake Store API');
+          // }
+          // const fetchedShopItems = await response.json();
+          const fetchedShopItems = APImock;
           setProducts(fetchedShopItems);
           setError(null); // Prevent error state persisting
           console.log(fetchedShopItems);
