@@ -8,7 +8,7 @@ import Cart from './components/Cart';
 import ShopContext from './shopContext';
 
 function ShopProvider({ children }) {
-  const [cartItems, setCartItems] = useState(['test']);
+  const [cartItems, setCartItems] = useState([]);
 
   return (
     // Surpressed because memos are discussed later in the course
