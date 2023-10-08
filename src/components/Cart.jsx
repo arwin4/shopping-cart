@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import CartContext from '../cartContext';
+import NavBar from './NavBar';
 
 export default function Cart() {
   const { cartItems } = useContext(CartContext);
@@ -19,6 +19,7 @@ export default function Cart() {
 
   return (
     <>
+      <NavBar />
       {countedCartItems.map((item) => {
         const itemData = item[0];
         const itemCount = item[1];
@@ -28,7 +29,6 @@ export default function Cart() {
           </div>
         );
       })}
-      <Link to="/">Back to store</Link>
     </>
   );
 }

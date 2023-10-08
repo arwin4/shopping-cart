@@ -1,16 +1,17 @@
 import React from 'react';
 
-import { Link, useOutletContext } from 'react-router-dom';
+import { useOutletContext } from 'react-router-dom';
 import styles from '../styles/App.module.css';
 import Store from './Store';
+import NavBar from './NavBar';
 
 function App() {
   const [products] = useOutletContext();
 
   return (
     <>
+      <NavBar />
       <Store allProducts={products} />
-      <Link to="/cart">Go to cart</Link>
     </>
   );
 }
