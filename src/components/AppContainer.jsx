@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Store from './Store';
 
-function Root() {
-  const [products, setProducts] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
+export default function AppContainer({ products }) {
   useEffect(
     () =>
       async function fetchShopItems() {
@@ -15,7 +12,6 @@ function Root() {
             throw new Error('Unable to fetch shop items from Fake Store API');
           }
           const fetchedShopItems = await response.json();
-          // const fetchedShopItems = APImock;
           setProducts(fetchedShopItems);
           setError(null); // Prevent error state persisting
           console.log(fetchedShopItems);
@@ -30,10 +26,10 @@ function Root() {
     [],
   );
 
-  if (error) return <>There was an error: {error}</>;
-  if (loading) return <>Loading...</>;
-
-  return <Outlet context={[products]} />;
+  return (
+    <>
+      <Store allProducts={products} />
+      <Link to="/cart">go to cart</Link>
+    </>
+  );
 }
-
-export default Root;

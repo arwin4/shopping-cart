@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 import styles from '../styles/App.module.css';
 import Store from './Store';
 
-function App({ products, error, loading }) {
-  if (error) return <>There was an error: {error}</>;
-  if (loading) return <>Loading...</>;
+function App() {
+  const [products] = useOutletContext();
+
   return (
     <>
       <Store allProducts={products} />
-      <Link to="/cart">go to cart</Link>
+      <Link to="/cart">Go to cart</Link>
     </>
   );
 }

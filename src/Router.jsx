@@ -26,16 +26,18 @@ export default function Router() {
       path: '/',
       element: <Root />,
       errorElement: <Error />,
-    },
-    {
-      path: 'index',
-      element: <App />,
-      errorElement: <Error />,
-    },
-    {
-      path: '/cart',
-      element: <Cart />,
-      errorElement: <Error />,
+      children: [
+        {
+          index: true,
+          element: <App />,
+          errorElement: <Error />,
+        },
+        {
+          path: '/cart',
+          element: <Cart />,
+          errorElement: <Error />,
+        },
+      ],
     },
   ]);
   return (
