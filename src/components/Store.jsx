@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { produce } from 'immer';
-import ShopContext from '../shopContext';
+import CartContext from '../cartContext';
 
 export default function Store({ allProducts }) {
   const products = allProducts;
-  const { cartItems, setCartItems } = useContext(ShopContext);
+  const { cartItems, setCartItems } = useContext(CartContext);
 
   // Add 1 of this product to the shopping cart
   // TODO: use useState instead of heavy-handed use-immer

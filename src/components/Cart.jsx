@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import ShopContext from '../shopContext';
+import CartContext from '../cartContext';
 
 export default function Cart() {
-  const { cartItems } = useContext(ShopContext);
+  const { cartItems } = useContext(CartContext);
 
   // Get an array of items and the amount of each item, for example: [[{'Backpack', ...}, 3], ...]
   function getCountedCartItems() {

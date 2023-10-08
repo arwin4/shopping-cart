@@ -5,18 +5,18 @@ import App from './components/App';
 import Error from './components/Error';
 import Cart from './components/Cart';
 
-import ShopContext from './shopContext';
+import CartContext from './cartContext';
 import Root from './components/Root';
 
-function ShopProvider({ children }) {
+function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
 
   return (
     // Surpressed because memos are discussed later in the course
     // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <ShopContext.Provider value={{ cartItems, setCartItems }}>
+    <CartContext.Provider value={{ cartItems, setCartItems }}>
       {children}
-    </ShopContext.Provider>
+    </CartContext.Provider>
   );
 }
 
@@ -41,12 +41,12 @@ export default function Router() {
     },
   ]);
   return (
-    <ShopProvider>
+    <CartProvider>
       <RouterProvider router={router} />
-    </ShopProvider>
+    </CartProvider>
   );
 }
 
-ShopProvider.propTypes = {
+CartProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
