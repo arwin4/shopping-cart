@@ -8,14 +8,9 @@ export default function Store({ allProducts }) {
   const { cartItems, setCartItems } = useContext(CartContext);
 
   // Add 1 of this product to the shopping cart
-  // TODO: use useState instead of heavy-handed use-immer
   const handleAddToCart = (product) => {
-    setCartItems(
-      produce(cartItems, (draft) => {
-        draft.push(product);
-        console.log(cartItems);
-      }),
-    );
+    setCartItems([...cartItems, product]);
+    console.log(cartItems);
   };
 
   // Remove all products of this type from the shopping cart
