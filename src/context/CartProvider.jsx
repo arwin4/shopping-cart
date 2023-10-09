@@ -13,10 +13,10 @@ function CartProvider({ children }) {
   };
 
   // Remove all products of this type from the shopping cart
-  const handleRemoveFromCart = (product) => {
+  const handleRemoveFromCart = (id) => {
     setCartItems(
       produce(cartItems, (draft) =>
-        draft.filter((productInCart) => productInCart.id !== product.id),
+        draft.filter((productInCart) => productInCart.id !== id),
       ),
     );
     console.log(cartItems);

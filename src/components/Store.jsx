@@ -14,7 +14,10 @@ export default function Store({ allProducts }) {
           <button type="button" onClick={() => handleAddToCart(product)}>
             Add to cart
           </button>{' '}
-          <button type="button" onClick={() => handleRemoveFromCart(product)}>
+          <button
+            type="button"
+            onClick={() => handleRemoveFromCart(product.id)}
+          >
             Remove from cart
           </button>
         </div>
