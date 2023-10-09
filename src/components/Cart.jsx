@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
-import { Trash } from 'lucide-react';
+import { Plus, Trash } from 'lucide-react';
 import CartContext from '../context/cartContext';
 import NavBar from './NavBar';
 import styles from '../styles/Button.module.css';
 
 export default function Cart() {
-  const { cartItems, handleRemoveFromCart } = useContext(CartContext);
+  const { cartItems, handleAddToCart, handleRemoveFromCart } =
+    useContext(CartContext);
 
   // Get an array of items and the amount of each item, for example: [[{'Backpack', ...}, 3], ...]
   function getCountedCartItems() {
@@ -28,6 +29,13 @@ export default function Cart() {
         <button
           type="button"
           className={styles.btn}
+          onClick={() => handleAddToCart(itemData.id)}
+        >
+          <Plus icon="lucide:edit" />
+        </button>
+        <button
+          type="button"
+          className={styles.btn}
           onClick={() => handleRemoveFromCart(itemData.id)}
         >
           <Trash icon="lucide:edit" />
@@ -44,6 +52,8 @@ export default function Cart() {
   }
 
   const totalPrice = getTotalPrice();
+
+  console.log(countedCartItems);
 
   return (
     <>
