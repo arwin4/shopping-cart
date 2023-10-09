@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { produce } from 'immer';
 import CartContext from './cartContext';
+import ProductContext from './productContext';
 
 function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
+  const { products } = useContext(ProductContext);
 
   // Add 1 of this product to the shopping cart
-  const handleAddToCart = (product) => {
-    setCartItems([...cartItems, product]);
-    console.log(cartItems);
+  const handleAddToCart = (id) => {
+    const productToAdd = products.find((product) => product.id === id);
+    setCartItems([...cartItems, productToAdd]);
   };
 
   // Remove all products of this type from the shopping cart
@@ -19,7 +21,6 @@ function CartProvider({ children }) {
         draft.filter((productInCart) => productInCart.id !== id),
       ),
     );
-    console.log(cartItems);
   };
 
   return (
