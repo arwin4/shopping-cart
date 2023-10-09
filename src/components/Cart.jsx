@@ -27,10 +27,19 @@ export default function Cart() {
     );
   });
 
+  function getTotalPrice() {
+    return cartItems
+      .map((item) => item.price)
+      .reduce((acc, cur) => acc + cur, 0);
+  }
+
+  const totalPrice = getTotalPrice();
+
   return (
     <>
       <NavBar />
       {cartSummary}
+      {totalPrice}
     </>
   );
 }
