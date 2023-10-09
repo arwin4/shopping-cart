@@ -1,27 +1,10 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { produce } from 'immer';
 import CartContext from '../context/cartContext';
 
 export default function Store({ allProducts }) {
   const products = allProducts;
-  const { cartItems, setCartItems } = useContext(CartContext);
-
-  // Add 1 of this product to the shopping cart
-  const handleAddToCart = (product) => {
-    setCartItems([...cartItems, product]);
-    console.log(cartItems);
-  };
-
-  // Remove all products of this type from the shopping cart
-  const handleRemoveFromCart = (product) => {
-    setCartItems(
-      produce(cartItems, (draft) =>
-        draft.filter((productInCart) => productInCart.id !== product.id),
-      ),
-    );
-    console.log(cartItems);
-  };
+  const { handleAddToCart, handleRemoveFromCart } = useContext(CartContext);
 
   return (
     <div className="item-overview">
