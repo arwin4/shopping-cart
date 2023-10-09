@@ -6,6 +6,7 @@ import Cart from './components/Cart';
 
 import Root from './components/Root';
 import CartProvider from './context/CartProvider';
+import ProductProvider from './context/ProductProvider';
 
 export default function Router() {
   const router = createBrowserRouter([
@@ -28,8 +29,10 @@ export default function Router() {
     },
   ]);
   return (
-    <CartProvider>
-      <RouterProvider router={router} />
-    </CartProvider>
+    <ProductProvider>
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
+    </ProductProvider>
   );
 }

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import ProductContext from '../context/productContext';
 
 function Root() {
-  const [products, setProducts] = useState(null);
+  const { products, setProducts } = useContext(ProductContext);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
