@@ -17,18 +17,20 @@ export default function Cart() {
   }
   const countedCartItems = getCountedCartItems();
 
+  const cartSummary = countedCartItems.map((item) => {
+    const itemData = item[0];
+    const itemCount = item[1];
+    return (
+      <div key={itemData.id} className="cart-item">
+        {itemData.title}: {itemCount}
+      </div>
+    );
+  });
+
   return (
     <>
       <NavBar />
-      {countedCartItems.map((item) => {
-        const itemData = item[0];
-        const itemCount = item[1];
-        return (
-          <div key={itemData.id} className="cart-item">
-            {itemData.title}: {itemCount}
-          </div>
-        );
-      })}
+      {cartSummary}
     </>
   );
 }
