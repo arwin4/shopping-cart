@@ -9,13 +9,13 @@ function CartProvider({ children }) {
   const { products } = useContext(ProductContext);
 
   // Add 1 of this product to the shopping cart
-  const handleAddToCart = (id) => {
+  const addToCart = (id) => {
     const productToAdd = products.find((product) => product.id === id);
     setCartItems([...cartItems, productToAdd]);
   };
 
   // Remove all products of this type from the shopping cart
-  const handleRemoveFromCart = (id) => {
+  const removeAllFromCart = (id) => {
     setCartItems(
       produce(cartItems, (draft) =>
         draft.filter((productInCart) => productInCart.id !== id),
@@ -27,7 +27,7 @@ function CartProvider({ children }) {
     <CartContext.Provider
       // Surpressed because memos are discussed later in the course
       // eslint-disable-next-line react/jsx-no-constructed-context-values
-      value={{ cartItems, handleAddToCart, handleRemoveFromCart }}
+      value={{ cartItems, addToCart, removeAllFromCart }}
     >
       {children}
     </CartContext.Provider>
