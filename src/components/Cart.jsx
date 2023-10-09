@@ -7,41 +7,25 @@ import styles from '../styles/Button.module.css';
 export default function Cart() {
   const { cartItems, addToCart, removeAllFromCart } = useContext(CartContext);
 
-  // Get an array of items and the amount of each item, for example: [[{'Backpack', ...}, 3], ...]
-  function getCountedCartItems() {
-    // Source for duplicate counting:
-    // https://bobbyhadz.com/blog/javascript-count-duplicates-in-array
-    const uniqueItems = [...new Set(cartItems)];
-    return uniqueItems.map((item) => [
-      item,
-      cartItems.filter((cartItem) => cartItem === item).length,
-    ]);
-  }
-  const countedCartItems = getCountedCartItems();
-
-  const cartSummary = countedCartItems.map((item) => {
-    const itemData = item[0];
-    const itemCount = item[1];
-    return (
-      <div key={itemData.id} className="cart-item">
-        {itemData.title}: {itemCount}
-        <button
-          type="button"
-          className={styles.btn}
-          onClick={() => addToCart(itemData.id)}
-        >
-          <Plus icon="lucide:edit" />
-        </button>
-        <button
-          type="button"
-          className={styles.btn}
-          onClick={() => removeAllFromCart(itemData.id)}
-        >
-          <Trash icon="lucide:edit" />
-        </button>
-      </div>
-    );
-  });
+  const cartSummary = cartItems.map((item) => (
+    <div key={item.id} className="cart-item">
+      {item.title}: {item.numberInCart}
+      <button
+        type="button"
+        className={styles.btn}
+        onClick={() => addToCart(item.id)}
+      >
+        <Plus icon="lucide:edit" />
+      </button>
+      <button
+        type="button"
+        className={styles.btn}
+        onClick={() => removeAllFromCart(item.id)}
+      >
+        <Trash icon="lucide:edit" />
+      </button>
+    </div>
+  ));
 
   function getTotalPrice() {
     return cartItems
@@ -52,14 +36,10 @@ export default function Cart() {
 
   const totalPrice = getTotalPrice();
 
-  console.log(countedCartItems);
-
   return (
     <>
       <NavBar />
-      {countedCartItems.length === 0
-        ? 'Your shopping cart is empty.'
-        : cartSummary}
+      {cartItems.length === 0 ? 'Your shopping cart is empty.' : cartSummary}
       {totalPrice}
     </>
   );

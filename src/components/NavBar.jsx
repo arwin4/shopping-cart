@@ -5,7 +5,14 @@ import CartContext from '../context/cartContext';
 
 function NavBar() {
   const { cartItems } = useContext(CartContext);
-  const itemAmount = cartItems.length;
+
+  function getNumberOfItemsInCart() {
+    return cartItems
+      .map((item) => item.numberInCart)
+      .reduce((acc, cur) => acc + cur, 0);
+  }
+
+  const itemAmount = getNumberOfItemsInCart();
 
   return (
     <>

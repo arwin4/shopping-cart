@@ -11,7 +11,20 @@ function CartProvider({ children }) {
   // Add 1 of this product to the shopping cart
   const addToCart = (id) => {
     const productToAdd = products.find((product) => product.id === id);
-    setCartItems([...cartItems, productToAdd]);
+    const foundItem = cartItems.find((item) => item?.id === id);
+    if (!foundItem) {
+      productToAdd.numberInCart = 1;
+      setCartItems([...cartItems, productToAdd]);
+    } else {
+      setCartItems(
+        produce(cartItems, (draft) => {
+          const productWhoseCountToIncrease = draft.find(
+            (item) => item.id === id,
+          );
+          productWhoseCountToIncrease.numberInCart += 1;
+        }),
+      );
+    }
   };
 
   // Remove all products of this type from the shopping cart
