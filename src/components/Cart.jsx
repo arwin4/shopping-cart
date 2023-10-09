@@ -38,7 +38,9 @@ export default function Cart() {
   return (
     <>
       <NavBar />
-      {cartSummary}
+      {countedCartItems.length === 0
+        ? 'Your shopping cart is empty.'
+        : cartSummary}
       {totalPrice}
     </>
   );
