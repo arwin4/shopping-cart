@@ -1,24 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import App from './components/App';
 import Error from './components/Error';
 import Cart from './components/Cart';
 
-import CartContext from './cartContext';
 import Root from './components/Root';
-
-function CartProvider({ children }) {
-  const [cartItems, setCartItems] = useState([]);
-
-  return (
-    // Surpressed because memos are discussed later in the course
-    // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <CartContext.Provider value={{ cartItems, setCartItems }}>
-      {children}
-    </CartContext.Provider>
-  );
-}
+import CartProvider from './context/CartProvider';
 
 export default function Router() {
   const router = createBrowserRouter([
@@ -46,7 +33,3 @@ export default function Router() {
     </CartProvider>
   );
 }
-
-CartProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-};

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { produce } from 'immer';
-import CartContext from '../cartContext';
+import CartContext from '../context/cartContext';
 
 export default function Store({ allProducts }) {
   const products = allProducts;
