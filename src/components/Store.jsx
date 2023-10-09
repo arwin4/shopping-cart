@@ -11,7 +11,7 @@ export default function Store({ allProducts }) {
       {products.map((product) => (
         <div key={product.id}>
           {product.title}
-          <button type="button" onClick={() => handleAddToCart(product)}>
+          <button type="button" onClick={() => handleAddToCart(product.id)}>
             Add to cart
           </button>{' '}
           <button
