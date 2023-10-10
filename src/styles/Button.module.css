@@ -10,7 +10,7 @@
   column-gap: 5px;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     background-color: hsl(0, 0%, 65%);
     color: inherit;
     cursor: pointer;
