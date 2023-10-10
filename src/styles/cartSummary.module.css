@@ -1,0 +1,57 @@
+.summary {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  padding: 10px 10px;
+}
+
+.cartItem {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: space-between;
+
+  grid-template-columns: 1fr 50px 40px 80px;
+
+  gap: 10px;
+
+  height: max-content;
+  padding: 10px 10px;
+
+  border-radius: 10px;
+  border: hsla(0, 0%, 0%, 0.1) 2px solid;
+
+  background-color: white;
+}
+
+.thumb {
+  height: 50px;
+  width: auto;
+  justify-self: center;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.number {
+  display: flex;
+  justify-content: center;
+}
+
+.plusMinus {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+
+  & * {
+    height: 10px;
+  }
+}
+
+.remove {
+  max-height: 30px;
+  align-self: center;
+}
