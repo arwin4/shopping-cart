@@ -13,6 +13,7 @@ import {
   buttonWrapper,
   plusMinus,
   remove,
+  total,
 } from '../styles/cartSummary.module.css';
 
 export default function Cart() {
@@ -67,7 +68,10 @@ export default function Cart() {
       <NavBar />
       <div className={summary}>
         {cartItems.length === 0 ? 'Your shopping cart is empty.' : cartSummary}
-        Total price €{totalPrice}
+        <div className={total}>
+          <div>Total price</div>
+          <div>€{totalPrice}</div>
+        </div>
       </div>
     </>
   );
