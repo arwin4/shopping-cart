@@ -9,7 +9,7 @@ import {
   summary,
   cartItem,
   thumb,
-  number,
+  title,
   buttonWrapper,
   plusMinus,
   remove,
@@ -21,9 +21,10 @@ export default function Cart() {
 
   const cartSummary = cartItems.map((item) => (
     <div key={item.id} className={cartItem}>
-      <div className="title">{item.title}</div>
-      <img className={thumb} src={item.image} />
-      <div className={number}>{item.numberInCart}</div>
+      <div className={title}>{item.title}</div>
+      <img className={thumb} src={item.image} alt={item.title} />
+      <div>{item.numberInCart}</div>
+      <div>€{(item.numberInCart * item.price).toFixed(2)}</div>
       <div className={buttonWrapper}>
         <div className={plusMinus}>
           <button
@@ -66,7 +67,7 @@ export default function Cart() {
       <NavBar />
       <div className={summary}>
         {cartItems.length === 0 ? 'Your shopping cart is empty.' : cartSummary}
-        Total price {totalPrice}
+        Total price €{totalPrice}
       </div>
     </>
   );

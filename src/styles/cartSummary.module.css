@@ -22,22 +22,24 @@
   border: hsla(0, 0%, 0%, 0.1) 2px solid;
 
   background-color: white;
+
+  & * {
+    justify-self: center;
+  }
+}
+
+.title {
+  justify-self: start;
 }
 
 .thumb {
   height: 50px;
-  width: auto;
   justify-self: center;
 }
 
 .buttonWrapper {
   display: flex;
   gap: 10px;
-}
-
-.number {
-  display: flex;
-  justify-content: center;
 }
 
 .plusMinus {
