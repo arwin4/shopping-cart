@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
-import { Plus, Trash } from 'lucide-react';
+import { Minus, Plus, Trash } from 'lucide-react';
 import CartContext from '../context/cartContext';
 import NavBar from './NavBar';
 import styles from '../styles/Button.module.css';
 
 export default function Cart() {
-  const { cartItems, addToCart, removeAllFromCart } = useContext(CartContext);
+  const { cartItems, addToCart, removeAllFromCart, removeOneFromCart } =
+    useContext(CartContext);
 
   const cartSummary = cartItems.map((item) => (
     <div key={item.id} className="cart-item">
@@ -13,25 +14,32 @@ export default function Cart() {
       <button
         type="button"
         className={styles.btn}
+        onClick={() => removeOneFromCart(item.id)}
+      >
+        <Minus />
+      </button>{' '}
+      <button
+        type="button"
+        className={styles.btn}
         onClick={() => addToCart(item.id)}
       >
-        <Plus icon="lucide:edit" />
+        <Plus />
       </button>
       <button
         type="button"
         className={styles.btn}
         onClick={() => removeAllFromCart(item.id)}
       >
-        <Trash icon="lucide:edit" />
+        <Trash />
       </button>
     </div>
   ));
 
   function getTotalPrice() {
     return cartItems
-      .map((item) => item.price)
-      .reduce((acc, cur) => acc + cur, 0)
-      .toFixed(2);
+      .map((item) => item.price * item.numberInCart) // price per product
+      .reduce((acc, cur) => acc + cur, 0) // add up all prices
+      .toFixed(2); // round to 2 decimals
   }
 
   const totalPrice = getTotalPrice();
