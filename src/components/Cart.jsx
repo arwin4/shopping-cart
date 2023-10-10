@@ -67,7 +67,13 @@ export default function Cart() {
     <>
       <NavBar />
       <div className={summary}>
-        {cartItems.length === 0 ? 'Your shopping cart is empty.' : cartSummary}
+        {cartItems.length === 0 ? (
+          <div style={{ textAlign: 'center' }}>
+            Your shopping cart is empty.{' '}
+          </div>
+        ) : (
+          cartSummary
+        )}
         <div className={total}>
           <div>Total price</div>
           <div>€{totalPrice}</div>
