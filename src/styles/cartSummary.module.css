@@ -15,6 +15,10 @@
 
   gap: 10px;
 
+  @media (max-width: 400px) {
+    gap: 0;
+  }
+
   height: max-content;
   padding: 10px 10px;
 
@@ -40,6 +44,10 @@
 .buttonWrapper {
   display: flex;
   gap: 10px;
+
+  @media (max-width: 400px) {
+    flex-direction: column;
+  }
 }
 
 .plusMinus {
