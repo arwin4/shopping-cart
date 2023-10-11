@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import ProductContext from '../context/productContext';
+import APImock from '../utils/APImock';
 
 function Root() {
   const { products, setProducts } = useContext(ProductContext);
@@ -10,12 +11,13 @@ function Root() {
   useEffect(() => {
     const fetchShopItems = async () => {
       try {
-        const response = await fetch('https://fakestoreapi.com/products');
-        if (!response.ok) {
-          throw new Error('Unable to fetch shop items from Fake Store API');
-        }
-        const fetchedShopItems = await response.json();
-        // const fetchedShopItems = APImock;
+        // Use mock because fakestoreapi seems unreliable.
+        // const response = await fetch('https://fakestoreapi.com/products');
+        // if (!response.ok) {
+        //   throw new Error('Unable to fetch shop items from Fake Store API');
+        // }
+        // const fetchedShopItems = await response.json();
+        const fetchedShopItems = APImock;
         setProducts(fetchedShopItems);
         setError(null); // Prevent error state persisting
       } catch (err) {
