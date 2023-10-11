@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
-import { Home, ShoppingCart } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CartContext from '../context/cartContext';
+import { nav, cart, title } from '../styles/NavBar.module.css';
+import { normal } from '../styles/Button.module.css';
 
 function NavBar() {
   const { cartItems } = useContext(CartContext);
@@ -15,15 +17,16 @@ function NavBar() {
   const itemAmount = getNumberOfItemsInCart();
 
   return (
-    <>
+    <div className={nav}>
       <Link to="/">
-        <Home />
+        <div className={title}>Buy My Stuff Store™</div>{' '}
       </Link>
-      {itemAmount}
-      <Link to="/cart">
+
+      <Link className={`${cart} ${normal}`} to="/cart">
         <ShoppingCart />
+        {itemAmount}
       </Link>
-    </>
+    </div>
   );
 }
 
