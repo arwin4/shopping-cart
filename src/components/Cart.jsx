@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Minus, Plus, Trash } from 'lucide-react';
+import { ChevronsRight, Minus, Plus, Trash } from 'lucide-react';
 import CartContext from '../context/cartContext';
 import NavBar from './NavBar';
 
@@ -13,6 +13,7 @@ import {
   buttonWrapper,
   plusMinus,
   remove,
+  checkout,
   total,
 } from '../styles/cartSummary.module.css';
 
@@ -74,9 +75,19 @@ export default function Cart() {
         ) : (
           cartSummary
         )}
-        <div className={total}>
-          <div>Total price</div>
-          <div>€{totalPrice}</div>
+        <div className={checkout}>
+          <div className={total}>
+            <div>Total price</div>
+            <div>€{totalPrice}</div>
+          </div>
+          <button
+            type="button"
+            className={normal}
+            // eslint-disable-next-line no-alert
+            onClick={() => alert('Order sent!')}
+          >
+            Checkout <ChevronsRight />
+          </button>
         </div>
       </div>
     </>

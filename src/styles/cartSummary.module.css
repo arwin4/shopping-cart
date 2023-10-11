@@ -66,8 +66,13 @@
   align-self: center;
 }
 
+.checkout {
+  display: flex;
+  justify-content: space-between;
+}
+
 .total {
   display: flex;
   gap: 20px;
-  align-self: end;
+  align-self: center;
 }
