@@ -18,11 +18,9 @@ function Root() {
         // const fetchedShopItems = APImock;
         setProducts(fetchedShopItems);
         setError(null); // Prevent error state persisting
-        console.log(fetchedShopItems);
       } catch (err) {
         setError(err.message);
         setProducts(null);
-        console.log(err);
       } finally {
         setLoading(false);
       }
