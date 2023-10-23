@@ -1,9 +1,5 @@
-# React + Vite template
+This is a shopping cart app for [The Odin Project](https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart).
 
-Includes:
+It uses the [Fake Store API](https://fakestoreapi.com/), although the API call is currently mocked.
 
-- React testing environment
-- Very basic styling, using the Inter font
-- Eslint and prettier set up, including eslint-config-prettier.
-- Disabled hot module replacement (hmr)
-- Surpressed linter warnings for import/no-extraneous-dependencies
+This was my first time using the React Router. The project uses the React Context API as well as CSS Modules.
